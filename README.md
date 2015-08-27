@@ -2,6 +2,10 @@
 
 A Ruby on Rails web application used to create and build box scores for basketball.
 
+## Bloc Capstone Project
+
+This is the capstone project for the Rails Web Development track on [Bloc](http://bloc.io).
+
 ## User Stories
 
 1. As a **User**, I want to sign up for a free account by providing a user name, password and email.
@@ -13,4 +17,5 @@ A Ruby on Rails web application used to create and build box scores for basketba
 7. After each **Game**, the **Team's** and each **Player's** statistics are saved and aggregated.
 
 ## Wireframes
+
 A Google Slides presentation of basic wireframes for **boxScore** user stories can be viewed here: https://goo.gl/rJNCVz
