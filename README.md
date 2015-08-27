@@ -4,7 +4,7 @@ A Ruby on Rails web application used to create and build box scores for basketba
 
 ## Bloc Capstone Project
 
-This is the capstone project for the Rails Web Development track on [Bloc](http://bloc.io).
+**boxScore** is my capstone project for the Rails Web Development track on [Bloc](http://bloc.io).
 
 ## User Stories
 
