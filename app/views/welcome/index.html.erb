@@ -1,2 +1,16 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="container">
+  <div class="jumbotron">
+    <h1 align="center">boxScore</h1> 
+    <p align="center">Track your basketball team game by game</p>
+    <p align="center">Keep statistics for multiple seasons</p>
+    <p align="center">Have full control over your team</p> 
+  </div>
+</div>
+<div class="container" align="center">
+	<div "col-lg-4">
+	<p><%= button_to "Sign Up", new_user_registration_path, :class => "btn btn-lg btn-primary", :style => "center", :method => :get %></p>
+	</div>
+	<div "col-lg-4">
+	<p><%= button_to "Log In", new_user_session_path, :class => "btn btn-lg btn-primary", :method => :get %></p>
+	</div>
+</div>
