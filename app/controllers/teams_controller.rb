@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(team_params)
+    @team = Team.find(params[:id])
   end
 
   def new
@@ -20,7 +20,8 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
 
     if @team.save
-      flash[:notice] = "Team is saved"
+      flash[:success] = "Team is saved"
+      redirect_to @team
     else
       flash[:notice] = "Error saving your team. Please try again."
       render :new
@@ -38,6 +39,6 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:event).permit(:id)
+    params.require(:team).permit(:user_id, :school, :nickname, :city, :state, :zip, :league)
   end
 end
