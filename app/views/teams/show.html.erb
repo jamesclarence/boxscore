@@ -1,2 +1,4 @@
 <h1>Your Team</h1>
-<h2><%= @team.school %> <%= @team.nickname %></h2>
+<h2><%= @team.school %> <%= @team.nickname %> (<%= @team.league %>)</h2>
+<p><%= @team.city %>, <%= @team.state %> <%= @team.zip %></p>
+<%= link_to 'Back To Teams', teams_path %>
