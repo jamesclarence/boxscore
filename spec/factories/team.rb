@@ -7,6 +7,7 @@ FactoryGirl.define do
     zip "30303"
     league "NBA"
     created_at Time.now
+    id 1
     user
   end
 end
