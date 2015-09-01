@@ -11,7 +11,7 @@
 	<tbody>
 		<% @teams.each do |team| %>
 			<tr>
-				<td><%= team.school %> <%= team.nickname %> <%= link_to 'Edit', edit_team_path(team) %> | <%= link_to 'Delete', team_path(team), method: :delete,data: { confirm: 'Are you sure?' } %></td>
+				<td><%= link_to "#{team.school} #{team.nickname}", team_path(team) %> | <%= link_to 'Edit', edit_team_path(team) %> | <%= link_to 'Delete', team_path(team), method: :delete,data: { confirm: 'Are you sure?' } %></td>
 				<td><%= team.city %>, <%= team.state %> <%= team.zip %></td>
 				<td><%= team.league %></td>
 			</tr>

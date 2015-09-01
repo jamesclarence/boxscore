@@ -18,7 +18,7 @@ end
 20.times do
   team = Team.create(
     school: Faker::Address.state,
-    nickname: Faker::Team.creature,
+    nickname: Faker::Team.creature.capitalize,
     city: Faker::Address.city,
     state: Faker::Address.state_abbr,
     zip: Faker::Address.zip_code,
