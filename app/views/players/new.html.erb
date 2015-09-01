@@ -1,0 +1,38 @@
+<h1>Add Player To Your Team</h1>
+
+<%= form_for @player, url: {action: "create"} do |f| %>
+
+	<div class="field">
+		<%= f.label :first_name %>
+		<%= f.text_field :firstname %>
+	</div>
+
+	<div class="field">
+		<%= f.label :last_name  %>
+		<%= f.text_field :lastname  %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :position %>
+		<%= f.text_field :position %>
+	</div>
+
+	<div class="field">
+		<%= f.label :number %>
+		<%= f.text_field :number %>
+	</div>
+
+	<div class="field">
+		<%= f.label :height %>
+		<%= f.text_field :height %>
+	</div>	
+
+	<div class="field">
+		<%= f.label :weight %>
+		<%= f.text_field :weight %>
+	</div>
+
+	<div class="actions">
+    	<%= f.submit %>
+  	</div>
+<% end %>

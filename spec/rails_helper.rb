@@ -50,4 +50,7 @@ RSpec.configure do |config|
 
   # Access Factory Girl's methods
   config.include FactoryGirl::Syntax::Methods
+
+  # Test Helper for Devise Gem
+  config.include Devise::TestHelpers, type: :controller
 end
