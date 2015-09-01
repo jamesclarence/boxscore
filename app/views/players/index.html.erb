@@ -1,2 +1,24 @@
-<h1>Roster - <%=  %></h1>
-<p>Find me in app/views/player/index.html.erb</p>
+<h1><%= @team.school %> <%= @team.nickname %> Roster</h1>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Number</th>
+			<th>Name</th>
+			<th>Position</th>
+			<th>Height (Inches)</th>
+			<th>Weight (lbs)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @players.each do |player| %>
+			<tr>
+				<td><%= player.number %></td>
+				<td><%= player.firstname %> <%= player.lastname %></td>
+				<td><%= player.position %></td>
+				<td><%= player.height %></td>
+				<td><%= player.weight %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

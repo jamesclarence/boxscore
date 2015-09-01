@@ -1,2 +1,18 @@
-<h1>Player#show</h1>
-<p>Find me in app/views/player/show.html.erb</p>
+<h1><%= @player.firstname %> <%= @player.lastname %> - #<%= @player.number %></h1>
+
+<table class="table table-striped">
+	<tr>
+		<th>Team:</th>
+		<td><%= @team.school %> <%= @team.nickname %></td>
+	</tr>
+		<th>Position:</th>
+		<td><%= @player.position %></td>
+	<tr>
+		<th>Height:</th>
+		<td><%= @player.height %> in.</td>
+	</tr>
+	<tr>
+		<th>Weight:</th>
+		<td><%= @player.weight %> lbs.</td>
+	</tr>
+</table>
