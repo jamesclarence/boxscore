@@ -1,4 +1,4 @@
-<h1><%= @team.school %> <%= @team.nickname %> Roster</h1>
+<h1><%= link_to "#{@team.school} #{@team.nickname}", team_path(@team) %></h1>
 
 <table class="table table-striped">
 	<thead>
@@ -22,3 +22,4 @@
 		<% end %>
 	</tbody>
 </table>
+<%= link_to 'Back To All Teams', teams_path %>

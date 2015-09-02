@@ -15,6 +15,7 @@ class PlayersController < ApplicationController
 
   def edit
     @player = Player.find(params[:id])
+    @team = Team.find(params[:team_id])
   end
 
   def create
@@ -35,7 +36,7 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
 
     if @player.update(player_params)
-      redirect_to @player
+      redirect_to team_player_path
     else
       render 'edit' 
     end

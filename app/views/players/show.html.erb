@@ -3,7 +3,7 @@
 <table class="table table-striped">
 	<tr>
 		<th>Team:</th>
-		<td><%= @team.school %> <%= @team.nickname %></td>
+		<td><%= link_to "#{@team.school} #{@team.nickname}", team_path(@team) %></td>
 	</tr>
 		<th>Position:</th>
 		<td><%= @player.position %></td>
@@ -16,3 +16,4 @@
 		<td><%= @player.weight %> lbs.</td>
 	</tr>
 </table>
+<%= link_to "Back To The #{@team.nickname} Roster", team_players_path(@team) %>
