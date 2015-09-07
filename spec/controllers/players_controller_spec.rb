@@ -63,12 +63,13 @@ describe PlayersController, type: :controller do
 
     context "invalid attributes" do
       it "does not save the new player" do
-        post :create, team_id: @team, player: attributes_for(:player, weight: nil)
-        expect(@player).to_not be_valid
+        expect{
+          post :create, team_id: @team, player: attributes_for(:player, firstname: nil)
+        }.to_not change(Player,:count)
       end
 
       it "re-renders players#new if invalid attributes" do
-        post :create, team_id: @team, player: attributes_for(:player, position: nil)
+        post :create, team_id: @team, player: attributes_for(:invalid_player)
         expect(response).to render_template("new")
       end
     end
