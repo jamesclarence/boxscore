@@ -37,6 +37,14 @@ describe TeamsController, type: :controller do
     end
   end
 
+  describe "GET edit" do
+    let(:team) {create(:team)}
+    it "assigns the requested team to @team" do
+      get :edit, id: team
+      expect(assigns(:team)).to eq(team)
+    end
+  end
+
   describe "POST create" do
     it "creates a team" do
       expect{

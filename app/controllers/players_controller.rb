@@ -25,7 +25,7 @@ class PlayersController < ApplicationController
 
     if @player.save
       flash[:success] = "#{@player.firstname} #{@player.lastname} saved to your team."
-      redirect_to new_team_player_path
+      redirect_to team_players_path
     else
       flash[:notice] = "Error saving the player. Please try again."
       render :new
