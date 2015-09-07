@@ -69,15 +69,62 @@ describe PlayersController, type: :controller do
       end
 
       it "re-renders players#new if invalid attributes" do
-        post :create, team_id: @team, player: attributes_for(:invalid_player)
+        post :create, team_id: @team, player: attributes_for(:player, firstname: nil)
         expect(response).to render_template("new")
       end
     end
   end
 
   describe "PUT update" do
+    context "valid attributes" do
+      it "locates the requested player" do
+        put :update, id: @player, team_id: @team, player: attributes_for(:player)
+        expect(assigns(:player)).to eq(@player)
+      end
+
+      it "changes @player's attributes" do
+        put :update, id: @player, team_id: @team, player: attributes_for(:player, firstname: "Bob")
+        @player.reload
+        expect(@player.firstname).to eq("Bob")
+      end
+
+      it "redirects to the updated player" do
+        put :update, id: @player, team_id: @team, player: attributes_for(:player)
+        expect(response).to redirect_to("/teams/#{@team.id}/players/#{@player.id}")
+      end
+    end
+
+    context "invalid attributes" do
+      it "finds the requested player" do
+        put :update, id: @player, team_id: @team, player: attributes_for(:player, firstname: nil)
+        @player.reload
+        expect(@player.id).to eq(1)
+      end
+
+      it "does not change @player's attributes" do
+        put :update, id: @player, team_id: @team, player: attributes_for(:player, firstname: nil)
+        @player.reload
+        expect(@player.firstname).to eq("Al")
+      end
+
+      it "re-renders the edit view" do
+        put :update, id: @player, team_id: @team, player: attributes_for(:player, firstname: nil)
+        @player.reload
+        expect(response).to render_template("edit")
+      end
+    end
   end
 
   describe "DELETE destroy" do
+    it "deletes the player" do
+      expect{
+        delete :destroy, id: @player, team_id: @team, player: attributes_for(:player)
+      }.to change(Player, :count).by(-1)
+    end
+
+    it "redirects to player#index" do
+      delete :destroy, id: @player, team_id: @team, player: attributes_for(:player)
+      expect(response).to redirect_to(team_players_path)
+    end
   end  
 end

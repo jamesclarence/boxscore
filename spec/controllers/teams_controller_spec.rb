@@ -89,7 +89,7 @@ describe TeamsController, type: :controller do
     context "invalid attributes" do
       it "locates the requested @team" do
         put :update, id: @team, team: attributes_for(:team)
-        expect(assigns(:team)).to_not eq(2)
+        expect(assigns(:team)).to eq(2)
       end
 
       it "does not change @team's attributes" do
