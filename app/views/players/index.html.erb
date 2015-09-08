@@ -1,0 +1,25 @@
+<h1><%= link_to "#{@team.school} #{@team.nickname}", team_path(@team) %></h1>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Number</th>
+			<th>Name</th>
+			<th>Position</th>
+			<th>Height (Inches)</th>
+			<th>Weight (lbs)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @players.each do |player| %>
+			<tr>
+				<td><%= player.number %></td>
+				<td><%= link_to "#{player.firstname} #{player.lastname}", team_player_path(@team, player) %></td>
+				<td><%= player.position %></td>
+				<td><%= player.height %></td>
+				<td><%= player.weight %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= link_to 'Back To All Teams', teams_path %>

@@ -1,0 +1,19 @@
+<h1><%= @player.firstname %> <%= @player.lastname %> - #<%= @player.number %></h1>
+
+<table class="table table-striped">
+	<tr>
+		<th>Team:</th>
+		<td><%= link_to "#{@team.school} #{@team.nickname}", team_path(@team) %></td>
+	</tr>
+		<th>Position:</th>
+		<td><%= @player.position %></td>
+	<tr>
+		<th>Height:</th>
+		<td><%= @player.height %> in.</td>
+	</tr>
+	<tr>
+		<th>Weight:</th>
+		<td><%= @player.weight %> lbs.</td>
+	</tr>
+</table>
+<%= link_to "Back To The #{@team.nickname} Roster", team_players_path(@team) %>

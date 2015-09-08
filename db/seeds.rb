@@ -18,12 +18,28 @@ end
 20.times do
   team = Team.create(
     school: Faker::Address.state,
-    nickname: Faker::Team.creature,
+    nickname: Faker::Team.creature.capitalize,
     city: Faker::Address.city,
     state: Faker::Address.state_abbr,
     zip: Faker::Address.zip_code,
     league: "NBA",
     user: User.all.sample
+    )
+end
+
+# Positions
+position = ["Point Guard", "Shooting Guard", "Small Forward", "Power Forward", "Center"]
+
+# Create Players
+300.times do
+  player = Player.create(
+    firstname: Faker::Name.first_name,
+    lastname: Faker::Name.last_name,
+    number: Faker::Number.number(2),
+    position: position.sample,
+    height: Faker::Number.between(71, 86),
+    weight: Faker::Number.between(180,300),
+    team: Team.all.sample
     )
 end
 
@@ -48,3 +64,4 @@ member.save!
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Team.count} teams created"
+puts "#{Player.count} players created"
