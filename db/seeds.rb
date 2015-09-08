@@ -43,6 +43,14 @@ position = ["Point Guard", "Shooting Guard", "Small Forward", "Power Forward", "
     )
 end
 
+# Create Games
+1000.times do
+  game = Game.create(
+    
+    )
+end
+
+
 # Create an admin
 admin = User.new(
   email: 'admin@example.com',
