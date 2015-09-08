@@ -1,4 +1,4 @@
-require "rails_helper"
+Írequire "rails_helper"
 
 describe PlayersController, type: :controller do
   let(:user) {create(:user)}
