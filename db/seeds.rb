@@ -55,6 +55,10 @@ end
     )
 end
 
+# Create Statistics For Players
+  # for each player do |f|
+
+
 
 # Create an admin
 admin = User.new(
