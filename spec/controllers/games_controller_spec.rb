@@ -59,7 +59,7 @@ describe GamesController, type: :controller do
 
       it "redirects to the team's games#index" do
         post :create, team_id: @team, game: attributes_for(:game)
-        expect(response).to redirect_to("/teams/1/games")
+        expect(response).to redirect_to("index")
       end
     end
 
@@ -78,8 +78,55 @@ describe GamesController, type: :controller do
   end
 
   describe "PUT update" do
+    context "valid attributes" do
+      it "locates the requested game" do
+        put :update, id: @game, team_id: @team, game: attributes_for(:game)
+        expect(assigns(:game)).to eq(@game)
+      end
+
+      it "changes @game's attributes" do
+        put :update, id: @game, team_id: @team, game: attributes_for(:game, team_score: 22)
+        @game.reload
+        expect(@game.team_score).to eq(22)
+      end
+
+      it "redirects to the updated game" do
+        put :update, id: @game, team_id: @team, game: attributes_for(:game)
+        expect(response).to redirect_to("/teams/#{@team.id}/games/#{@game.id}")
+      end
+    end
+
+    context "invalid attributes" do
+      it "finds the requested game" do
+        put :update, id: @game, team_id: @team, game: attributes_for(:game, team_score: nil)
+        @game.reload
+        expect(@game.id).to eq(1)
+      end
+
+      it "does not change @game's attributes" do
+        put :update, id: @game, team_id: @team, game: attributes_for(:game, team_score: nil)
+        @game.reload
+        expect(@game.team_score).to eq(2)
+      end
+
+      it "re-renders the edit view" do
+        put :update, id: @game, team_id: @team, game: attributes_for(:game, team_score: nil)
+        @game.reload
+        expect(response).to render_template("edit")
+      end
+    end
   end
 
   describe "DELETE destroy" do
+    it "deletes the game" do
+      expect{
+        delete :destroy, id: @game, team_id: @team, game: attributes_for(:game)
+      }.to change(Game, :count).by(-1)
+    end
+
+    it "redirects to game#index" do
+      delete :destroy, id: @game, team_id: @team, game: attributes_for(:game)
+      expect(response).to redirect_to(team_games_path)
+    end
   end
 end
