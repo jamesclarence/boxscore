@@ -1,0 +1,33 @@
+<h1>Edit The Game Information</h1>
+
+<%= form_for :game, url: team_game_path(@team, @game), method: :patch do |f| %>
+
+	<div class="field">
+		<%= f.label :date %>
+		<%= f.text_field :date %>
+	</div>
+
+	<div class="field">
+		<%= f.label :location  %>
+		<%= f.text_field :location  %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :opponent %>
+		<%= f.text_field :opponent_id %>
+	</div>	
+
+	<div class="field">
+		<%= f.label :score %>
+		<%= f.text_field :team_score %>
+	</div>
+
+	<div class="field">
+		<%= f.label :opponent_score %>
+		<%= f.text_field :opponent_score %>
+	</div>
+
+	<div class="actions">
+    	<%= f.submit %>
+  	</div>
+<% end %>

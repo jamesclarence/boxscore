@@ -14,9 +14,9 @@ class Game < ActiveRecord::Base
 
   def result
     if win?
-      "win"
+      "Win"
     else
-      "loss"
+      "Loss"
     end
   end
 end

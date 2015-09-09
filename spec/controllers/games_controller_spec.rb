@@ -52,7 +52,9 @@ describe GamesController, type: :controller do
       it "creates a new game" do
         expect{
           post :create, team_id: @team, game: attributes_for(:game)
-        }.to change(Game, :count).by(1)
+        }.to change(Game, :count)
+        # post :create, team_id: @team, game: attributes_for(:game)
+        # expect(@game.id).to change(Game, :count)
       end
 
       it "redirects to the team's games#index" do
