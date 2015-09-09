@@ -43,6 +43,19 @@ position = ["Point Guard", "Shooting Guard", "Small Forward", "Power Forward", "
     )
 end
 
+# Create Games
+1000.times do
+  game = Game.create(
+    date: Faker::Date.between(300.days.ago, Date.today),
+    location: Faker::Address.city,
+    team_score: Faker::Number.between(85, 120),
+    opponent_score: Faker::Number.between(85, 120),
+    team: Team.all.sample,
+    opponent: Team.all.sample
+    )
+end
+
+
 # Create an admin
 admin = User.new(
   email: 'admin@example.com',
@@ -65,3 +78,4 @@ puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Team.count} teams created"
 puts "#{Player.count} players created"
+puts "#{Game.count} games created"

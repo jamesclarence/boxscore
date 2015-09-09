@@ -1,0 +1,23 @@
+<h1>Game Log - <%= @team.school %> <%= @team.nickname %></h1>
+<h2>Record: </h2>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Opponent</th>
+			<th>Score</th>
+			<th>Result</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @games.each do |game| %>
+			<tr>
+				<th><%= game.date %></th>
+				<th><%= game.opponent.school %> <%= game.opponent.nickname %></th>
+				<th><%= game.team_score %>-<%= game.opponent_score %></th>
+				<th><%= game.result %></th>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
