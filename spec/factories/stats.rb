@@ -18,5 +18,4 @@ FactoryGirl.define do
     fouls 4
     minutes 25
   end
-
 end
