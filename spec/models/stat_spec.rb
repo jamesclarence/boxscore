@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Stat, type: :model do
-  before(:each) do
+  before do
     @stat = create(:stat)
   end
 
@@ -138,15 +138,18 @@ RSpec.describe Stat, type: :model do
     end
   end
 
-  describe "#verify_points?" do
-    it "verifies that a player's points are accurate based on made shots" do
-      expect(@stat.verify_points?).to eq(true)
-    end
-  end
+  # describe "#verify_points" do
+  #   # it "verifies that a player's points are accurate based on made shots" do
+  #   #   expect(@stat.verify_points?).to eq(true)
+  #   # end
+  #   it "validates that a player's points are accurate based on made 2P, 3P, and free throws" do
+  #     expect(@stat.verify_points).to eq(true)
+  #   end
+  # end
 
-  describe "#verify_fga?" do
-    it "verifies that a player's field goal attempts are accurate based on 2PA and 3PA" do
-      expect(@stat.verify_fga?).to eq(true)
-    end
-  end 
+  # describe "#verify_fga?" do
+  #   it "verifies that af player's field goal attempts are accurate based on 2PA and 3PA" do
+  #     expect(@stat.verify_fga).to eq(true)
+  #   end
+  # end 
 end

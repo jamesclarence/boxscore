@@ -2,6 +2,8 @@ class Stat < ActiveRecord::Base
   belongs_to :player
   belongs_to :game
 
+  validate :verify_points, :verify_fga, on: :create
+
   # Played In Game?
   def game_played?
     minutes > 0
@@ -70,14 +72,18 @@ class Stat < ActiveRecord::Base
   end
 
   # Verify Points
-  def verify_points?
-    points == (two_pt * 2) + (three_p * 3) + ft
-  end
+  # def verify_points
+  #   if points != (two_pt * 2) + (three_p * 3) + ft
+  #     errors.add(:points, "Points must to equal 2P, 3P, and FT made")
+  #   end
+  # end
 
-  # Verify Field Goal Attemps
-  def verify_fga?
-    fga == two_pt_a + three_p_a
-  end
+  # # Verify Field Goal Attemps
+  # def verify_fga
+  #   if fga != two_pt_a + three_p_a
+  #     errors.add(:fga, "FGA must equal 2P + 3P attempts")
+  #   end
+  # end
 
   # Some statistic formulas from the following sources:
     # Kevin Pelton: http://www.nba.com/thunder/news/stats101.html
