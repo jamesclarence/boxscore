@@ -138,16 +138,30 @@ RSpec.describe Stat, type: :model do
     end
   end
 
+  describe ".StatsValidator" do
+    it "is valid when points == 31" do
+      expect(@stat).to be_valid
+    end
+
+    it "raises error" do
+      
+    end
+  end
+
+
+
+
   # describe "#verify_points" do
-  #   # it "verifies that a player's points are accurate based on made shots" do
-  #   #   expect(@stat.verify_points?).to eq(true)
-  #   # end
-  #   it "validates that a player's points are accurate based on made 2P, 3P, and free throws" do
-  #     expect(@stat.verify_points).to eq(true)
+  #   it "verifies a player's points" do
+  #     expect(@stat.verify_points?).to eq(true)
   #   end
+
+  #   # it "raises error" do
+  #   #   expect(@stat.points = 25).to raise_error("Points must equal 2P, 3P, and FT made")
+  #   # end
   # end
 
-  # describe "#verify_fga?" do
+  # describe "#verify_fga" do
   #   it "verifies that af player's field goal attempts are accurate based on 2PA and 3PA" do
   #     expect(@stat.verify_fga).to eq(true)
   #   end

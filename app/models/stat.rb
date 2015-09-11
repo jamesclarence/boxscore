@@ -2,7 +2,10 @@ class Stat < ActiveRecord::Base
   belongs_to :player
   belongs_to :game
 
-  validate :verify_points, :verify_fga, on: :create
+  validates_with StatsValidator
+
+  #validates :points, presence: true, if: :verify_points?
+  # before_save :verify_points, :verify_fga
 
   # Played In Game?
   def game_played?
@@ -71,17 +74,21 @@ class Stat < ActiveRecord::Base
     orb + drb
   end
 
-  # Verify Points
-  # def verify_points
+  # # Verify Points
+  # def verify_points?
   #   if points != (two_pt * 2) + (three_p * 3) + ft
-  #     errors.add(:points, "Points must to equal 2P, 3P, and FT made")
+  #     errors.add(:points, "Points must equal 2P, 3P, and FT made")
+  #   else
+  #     points.valid? == true
   #   end
   # end
 
-  # # Verify Field Goal Attemps
+  # # # Verify Field Goal Attemps
   # def verify_fga
   #   if fga != two_pt_a + three_p_a
   #     errors.add(:fga, "FGA must equal 2P + 3P attempts")
+  #   else
+  #     true
   #   end
   # end
 

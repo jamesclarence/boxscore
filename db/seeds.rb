@@ -56,7 +56,23 @@ end
 end
 
 # Create Statistics For Players
-  # for each player do |f|
+player.each do |f|
+  stat = Stat.create(
+    fg: Faker::Number.between(0, 15),
+    fga: Faker::Number.between(0, 20),
+    three_p: Faker::Number.between(0, 10),
+    three_p_a: Faker::Number.between(0, 10),
+    orb: Faker::Number.between(0, 5),
+    drb: Faker::Number.between(0, 15),
+    assists: Faker::Number.between(0, 12),
+    steals: Faker::Number.between(0, 5),
+    blocks: Faker::Number.between(0, 5),
+    turnovers: Faker::Number.between(0, 8),
+    fouls: Faker::Number.between(0, 6),
+    minutes: Faker::Number.between(0, 48),
+    points: Faker::Number.between(0, 30),
+    )
+end
 
 
 
