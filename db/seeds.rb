@@ -15,7 +15,7 @@ I18n.reload!
 end
 
 # Create Teams
-20.times do
+10.times do
   team = Team.create(
     school: Faker::Address.state,
     nickname: Faker::Team.creature.capitalize,
@@ -31,7 +31,7 @@ end
 position = ["Point Guard", "Shooting Guard", "Small Forward", "Power Forward", "Center"]
 
 # Create Players
-300.times do
+150.times do
   player = Player.create(
     firstname: Faker::Name.first_name,
     lastname: Faker::Name.last_name,
@@ -44,7 +44,7 @@ position = ["Point Guard", "Shooting Guard", "Small Forward", "Power Forward", "
 end
 
 # Create Games
-1000.times do
+250.times do
   game = Game.create(
     date: Faker::Date.between(300.days.ago, Date.today),
     location: Faker::Address.city,
@@ -56,12 +56,17 @@ end
 end
 
 # Create Statistics For Players
-player.each do |f|
+players = Player.all
+games = Game.all
+
+until Stat.count == 750 do
   stat = Stat.create(
-    fg: Faker::Number.between(0, 15),
-    fga: Faker::Number.between(0, 20),
+    fg: Faker::Number.between(0, 10),
+    fga: Faker::Number.between(11, 25),
     three_p: Faker::Number.between(0, 10),
     three_p_a: Faker::Number.between(0, 10),
+    ft: Faker::Number.between(0, 10),
+    fta: Faker::Number.between(0, 10),
     orb: Faker::Number.between(0, 5),
     drb: Faker::Number.between(0, 15),
     assists: Faker::Number.between(0, 12),
@@ -69,12 +74,12 @@ player.each do |f|
     blocks: Faker::Number.between(0, 5),
     turnovers: Faker::Number.between(0, 8),
     fouls: Faker::Number.between(0, 6),
-    minutes: Faker::Number.between(0, 48),
     points: Faker::Number.between(0, 30),
-    )
+    minutes: Faker::Number.between(0, 48),
+    player: players.sample,
+    game: games.sample
+  )
 end
-
-
 
 # Create an admin
 admin = User.new(
@@ -99,3 +104,4 @@ puts "#{User.count} users created"
 puts "#{Team.count} teams created"
 puts "#{Player.count} players created"
 puts "#{Game.count} games created"
+puts  "#{Stat.count} set of statistics created"

@@ -4,9 +4,6 @@ class Stat < ActiveRecord::Base
 
   validates_with StatsValidator
 
-  #validates :points, presence: true, if: :verify_points?
-  # before_save :verify_points, :verify_fga
-
   # Played In Game?
   def game_played?
     minutes > 0
@@ -73,24 +70,6 @@ class Stat < ActiveRecord::Base
   def trb
     orb + drb
   end
-
-  # # Verify Points
-  # def verify_points?
-  #   if points != (two_pt * 2) + (three_p * 3) + ft
-  #     errors.add(:points, "Points must equal 2P, 3P, and FT made")
-  #   else
-  #     points.valid? == true
-  #   end
-  # end
-
-  # # # Verify Field Goal Attemps
-  # def verify_fga
-  #   if fga != two_pt_a + three_p_a
-  #     errors.add(:fga, "FGA must equal 2P + 3P attempts")
-  #   else
-  #     true
-  #   end
-  # end
 
   # Some statistic formulas from the following sources:
     # Kevin Pelton: http://www.nba.com/thunder/news/stats101.html
