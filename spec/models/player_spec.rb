@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Player, type: :model do
-  
   before do
     @player = create(:player)
   end
@@ -13,5 +12,4 @@ RSpec.describe Player, type: :model do
   it "validates al horford's last name" do
     expect(@player.lastname).to eq("Horford")
   end
-
 end
