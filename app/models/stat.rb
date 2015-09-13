@@ -1,6 +1,7 @@
 class Stat < ActiveRecord::Base
   belongs_to :player
   belongs_to :game
+  has_many :teams, through: :game
 
   validates_with StatsValidator
 

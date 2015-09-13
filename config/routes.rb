@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :teams do
     resources :players
-    resources :games
+    resources :games do
+      resources :stats
+    end
   end
   
   root to: 'welcome#index'
