@@ -1,4 +1,4 @@
-<h1><%= @game.team.school %> <%= @game.team.nickname %> vs. <%= @game.opponent.school %> <%= @game.opponent.nickname %></h1>
+<h1><%= link_to "#{@team.school} #{@team.nickname}", team_path(@team) %> vs. <%= link_to "#{@game.opponent.school} #{@game.opponent.nickname}", team_path(@game.opponent) %></h1>
 <h3>(<%= @game.date %> - <%= @game.location %>)</h3>
 
 <table class="table table-striped">
@@ -6,11 +6,13 @@
 		<th><%= link_to "#{@team.school} #{@team.nickname}", team_path(@team) %>:</th>
 		<td><%= @game.team_score %></td>
 	</tr>
-		<th><%= link_to "#{@game.opponent.school} #{@game.opponent.nickname}", team_path(@team) %>:</th>
+		<th><%= link_to "#{@game.opponent.school} #{@game.opponent.nickname}", @game.opponent %>:</th>
 		<td><%= @game.opponent_score %></td>
 	<tr>
 		<th>Result:</th>
 		<td><%= @game.result %></td>
 	</tr>
 </table>
-<%= link_to "Back To The #{@team.nickname} Game Log", team_games_path(@team) %>
+
+<%= render "stats/index" %>
+<%= link_to "Back To The #{@team.nickname} Game Log", team_path(@team) %>

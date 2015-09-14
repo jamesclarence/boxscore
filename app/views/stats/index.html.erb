@@ -1,0 +1,49 @@
+<h1>Stats#index</h1>
+<p>Find me in app/views/stats/index.html.erb</p>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Player - Position</th>
+			<th>Minutes</th>
+			<th>FG</th>
+			<th>FGA</th>
+			<th>3P</th>
+			<th>3PA</th>
+			<th>FT</th>
+			<th>FTA</th>
+			<th>ORB</th>
+			<th>DRB</th>
+			<th>TRB</th>
+			<th>AST</th>
+			<th>STL</th>
+			<th>BLK</th>
+			<th>TOV</th>
+			<th>PF</th>
+			<th>PTS</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @stats.each do |stat| %>
+			<tr>
+				<td><%= link_to "#{stat.player.firstname} #{stat.player.lastname} - #{stat.player.position}", team_player_path(@team, player) %></td>
+				<td><%= stat.minutes %></td>
+				<td><%= stat.fg %></td>
+				<td><%= stat.fga %></td>
+				<td><%= stat.three_p %></td>
+				<td><%= stat.three_p_a %></td>
+				<td><%= stat.ft %></td>
+				<td><%= stat.fta %></td>
+				<td><%= stat.orb %></td>
+				<td><%= stat.drb %></td>
+				<td><%= stat.trb %></td>
+				<td><%= stat.assists %></td>
+				<td><%= stat.steals %></td>
+				<td><%= stat.blocks %></td>
+				<td><%= stat.turnovers %></td>
+				<td><%= stat.fouls %></td>
+				<td><%= stat.points %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

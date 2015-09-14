@@ -1,0 +1,20 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Opponent</th>
+			<th>Score</th>
+			<th>Result</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @team.games.each do |game| %>
+			<tr>
+				<td><%= game.date.to_date %></td>
+				<td><%= game.opponent.school %> <%= game.opponent.nickname %></td>
+				<td><%= link_to "#{game.team_score}-#{game.opponent_score}", team_game_path(@team, game) %></td>
+				<td><%= game.result %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
