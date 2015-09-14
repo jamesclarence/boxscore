@@ -1,7 +1,6 @@
 class StatsController < ApplicationController
   def index
     @game = Game.find(params[:game_id])
-    # @stats = @game.stats # .find(params[:stat_id])
     @player = Player.find(params[:player_id])
   end
 

@@ -1,0 +1,36 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Opponent</th>
+			<th>Score</th>
+			<th>Result</th>
+			<th>Minutes</th>
+			<th>FG</th>
+			<th>FGA</th>
+			<th>3P</th>
+			<th>3PA</th>
+			<th>FT</th>
+			<th>FTA</th>
+			<th>ORB</th>
+			<th>DRB</th>
+			<th>TRB</th>
+			<th>AST</th>
+			<th>STL</th>
+			<th>BLK</th>
+			<th>TOV</th>
+			<th>PF</th>
+			<th>PTS</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% player.games.each do |player| %>
+			<tr>
+				<td><%= player.date.to_date %></td>
+				<td><%= player.opponent.school %> <%= player.opponent.nickname %></td>
+				<td><%= player.team_score %> - <%= player.opponent_score %></td>
+				<td><%= player.result %></td>	
+			</tr>
+		<% end %>	
+	</tbody>
+</table>

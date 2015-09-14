@@ -14,5 +14,6 @@
 	</tr>
 </table>
 
-<%= render "stats/index" %>
+<%= render "shared/stats", game: @game %>
+<%= render "shared/adv_stats", game: @game %>
 <%= link_to "Back To The #{@team.nickname} Game Log", team_path(@team) %>

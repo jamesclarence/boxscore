@@ -6,6 +6,12 @@ class Game < ActiveRecord::Base
   
   validates_presence_of :team_id, :opponent_id, :team_score, :opponent_score
   
+  default_scope { order(date: :desc) }
+
+  def date
+    self[:date].to_date
+  end
+
   def win?
     team_score > opponent_score
   end
