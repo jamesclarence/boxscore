@@ -1,0 +1,21 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Your Team</th>
+			<th>Opponent</th>
+			<th>Score</th>
+			<th>Result</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= game.date %></td>
+			<td><%= link_to "#{team.nickname}", team_path(team) %></td>
+			<td><%= link_to "#{game.opponent.nickname}", game.opponent %></td>
+			<td><%= link_to "#{game.team_score}-#{game.opponent_score}", team_game_path(team, game) %></td>
+			<td><%= game.result %></td>
+		</tr>
+	</tbody>
+</table>
+

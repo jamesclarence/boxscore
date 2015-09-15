@@ -1,2 +1,6 @@
-<h1>Stats#new</h1>
-<p>Find me in app/views/stats/new.html.erb</p>
+<h1 align="center">Enter Box Score</h1>
+
+<%= render partial: "shared/show_game", locals: {game: @game, team: @game.team} %>
+
+<%= render partial: "shared/box_score", locals: {stat: @stat, player: @game.players} %>
+

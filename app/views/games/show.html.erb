@@ -1,18 +1,8 @@
 <h1><%= link_to "#{@team.school} #{@team.nickname}", team_path(@team) %> vs. <%= link_to "#{@game.opponent.school} #{@game.opponent.nickname}", team_path(@game.opponent) %></h1>
-<h3>(<%= @game.date %> - <%= @game.location %>)</h3>
+<h3>Location: <%= @game.location %></h3>
 
-<table class="table table-striped">
-	<tr>
-		<th><%= link_to "#{@team.school} #{@team.nickname}", team_path(@team) %>:</th>
-		<td><%= @game.team_score %></td>
-	</tr>
-		<th><%= link_to "#{@game.opponent.school} #{@game.opponent.nickname}", @game.opponent %>:</th>
-		<td><%= @game.opponent_score %></td>
-	<tr>
-		<th>Result:</th>
-		<td><%= @game.result %></td>
-	</tr>
-</table>
+<%= render partial: "shared/show_game", locals: {game: @game, team: @game.team} %>
+
 
 <%= render "shared/stats", game: @game %>
 <%= render "shared/adv_stats", game: @game %>

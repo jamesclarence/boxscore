@@ -1,0 +1,132 @@
+<%= form_for(stat), url: {action: "create"} do |f| %>
+
+	<div class="field">
+		<%= f.label :date %>
+		<%= f.text_field :date %>
+	</div>
+
+	<div class="field">
+		<%= f.label :location  %>
+		<%= f.text_field :location  %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :opponent %>
+		<%= f.text_field :opponent_id %>
+	</div>	
+
+	<div class="field">
+		<%= f.label :score %>
+		<%= f.text_field :team_score %>
+	</div>
+
+	<div class="field">
+		<%= f.label :opponent_score %>
+		<%= f.text_field :opponent_score %>
+	</div>
+
+	<div class="actions">
+    	<%= f.submit %>
+  	</div>
+<% end %>
+
+
+		<%= f.label :mp %>
+		<%= f.text_field :minutes %>
+
+		<%= f.label :fg %>
+		<%= f.text_field :fg %>
+
+		<%= f.label :fga %>
+		<%= f.text_field :fga %>
+
+		<%= f.label :threeP %>
+		<%= f.text_field :three_p %>
+
+		<%= f.label :threePA %>
+		<%= f.text_field :three_p_a %>
+
+		<%= f.label :ft %>
+		<%= f.text_field :ft %>
+
+		<%= f.label :fta %>
+		<%= f.text_field :fta %>
+
+		<%= f.label :orb %>
+		<%= f.text_field :orb %>
+
+		<%= f.label :drb %>
+		<%= f.text_field :drb %>
+
+		<%= f.label :TRB %>
+		<%= f.text_field :trb %>
+
+		<%= f.label :AST %>
+		<%= f.text_field :assists %>
+
+		<%= f.label :STL %>
+		<%= f.text_field :steals %>
+
+		<%= f.label :BLK %>
+		<%= f.text_field :blocks %>
+
+		<%= f.label :TOV %>
+		<%= f.text_field :turnovers %>
+
+		<%= f.label :PF %>
+		<%= f.text_field :fouls %>
+
+		<%= f.label :PTS %>
+		<%= f.text_field :points %>
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th colspan="17">Traditional Box Score Statistics</th>
+		</tr>
+		<tr>
+			<th>Player - Position</th>
+			<th>Minutes</th>
+			<th>FG</th>
+			<th>FGA</th>
+			<th>3P</th>
+			<th>3PA</th>
+			<th>FT</th>
+			<th>FTA</th>
+			<th>ORB</th>
+			<th>DRB</th>
+			<th>TRB</th>
+			<th>AST</th>
+			<th>STL</th>
+			<th>BLK</th>
+			<th>TOV</th>
+			<th>PF</th>
+			<th>PTS</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= form_for(stat), url: {action: "create"} do |f| %>
+			<% game.stats.each do |stat| %>
+			<tr>
+				<td><%= link_to "#{stat.player.firstname} #{stat.player.lastname} - #{stat.player.position}", team_player_path(stat.player.team, stat.player) %></td>
+				<td><%= stat.minutes %></td>
+				<td><%= stat.fg %></td>
+				<td><%= stat.fga %></td>
+				<td><%= stat.three_p %></td>
+				<td><%= stat.three_p_a %></td>
+				<td><%= stat.ft %></td>
+				<td><%= stat.fta %></td>
+				<td><%= stat.orb %></td>
+				<td><%= stat.drb %></td>
+				<td><%= stat.trb %></td>
+				<td><%= stat.assists %></td>
+				<td><%= stat.steals %></td>
+				<td><%= stat.blocks %></td>
+				<td><%= stat.turnovers %></td>
+				<td><%= stat.fouls %></td>
+				<td><%= stat.points %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
