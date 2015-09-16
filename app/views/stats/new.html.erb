@@ -1,6 +1,10 @@
 <h1 align="center">Enter Box Score</h1>
 
-<%= render partial: "shared/show_game", locals: {game: @game, team: @game.team} %>
+<%= @player.each do |f| %>
+	<p><%= f.firstname %></p>
+<% end %>
+
+<%= render partial: "shared/show_game", locals: {game: @game, team: @game.team, player: @game.team.players} %>
 
 <%= render partial: "shared/box_score", locals: {stat: @stat, player: @game.players} %>
 
