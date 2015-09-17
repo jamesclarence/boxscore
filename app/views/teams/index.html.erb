@@ -4,14 +4,17 @@
 	<thead>
 		<tr>
 			<th>Team</th>
+			<th>Team Actions</th>
 			<th>Location</th>
 			<th>League</th>
+			<th>Record</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @teams.each do |team| %>
 			<tr>
-				<td><%= link_to "#{team.school} #{team.nickname}", team_path(team) %> | <%= link_to 'Edit', edit_team_path(team) %> | <%= link_to 'Delete', team_path(team), method: :delete,data: { confirm: 'Are you sure?' } %></td>
+				<td><%= link_to "#{team.school} #{team.nickname}", team_path(team) %></td>
+				<td><%=  link_to 'See Roster', team_players_path(team) %> | <%= link_to 'Edit Team Info', edit_team_path(team) %> | <%= link_to 'Delete Team', team_path(team), method: :delete,data: { confirm: 'Are you sure?' } %></td>
 				<td><%= team.city %>, <%= team.state %> <%= team.zip %></td>
 				<td><%= team.league %></td>
 			</tr>

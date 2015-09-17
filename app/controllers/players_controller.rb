@@ -8,6 +8,7 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
     @stat = @player.stats
     @team = Team.find(params[:team_id])
+    # @game = Game.find(params[:game_id])
   end
 
   def new

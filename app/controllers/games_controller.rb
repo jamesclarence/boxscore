@@ -26,7 +26,7 @@ class GamesController < ApplicationController
 
     if @game.save
       flash[:success] = "Game saved to your team."
-      redirect_to team_path(@team)
+      redirect_to team_game_path(@team)
     else
       flash[:notice] = "Error saving the game. Please try again."
       render :new
@@ -53,6 +53,8 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:date, :location, :opponent_id, :team_score, :opponent_score)
+    params.require(:game).permit(:date, :location, :opponent_id, :team_score, :opponent_score,
+      :stats_attributes => [:id, :player_id]
+      )
   end
 end

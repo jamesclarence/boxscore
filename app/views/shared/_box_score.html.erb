@@ -22,7 +22,8 @@
 	</thead>
 	<tbody>
 		<%= form_for stat, url: {action: "create"} do |f| %>
-				<td>Player Name</td>
+			<tr>	
+				<td><%= player.firstname%></td>
 
 				<td class="field">
 					<%= f.text_field :minutes %>
@@ -93,5 +94,6 @@
 			  	</td>				
 			</tr>
 		<% end %>
+			<% end %>
 	</tbody>
 </table>

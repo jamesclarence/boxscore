@@ -17,6 +17,6 @@
 	</tr>
 </table>
 
-<%= render "shared/player_game_log", player: @player %>
+<%= render partial: "shared/player_game_log", locals: {player: @player, game: @game, stat: @stat} %>
 
 <%= link_to "Back To The #{@team.nickname} Roster", team_players_path(@team) %>

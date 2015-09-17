@@ -26,7 +26,7 @@
 	<tbody>
 		<% game.stats.each do |stat| %>
 			<tr>
-				<td><%= link_to "#{stat.player.firstname} #{stat.player.lastname} - #{stat.player.position}", team_player_path(stat.player.team, stat.player) %></td>
+				<td><%= link_to "#{stat.player.firstname} #{stat.player.lastname}", team_player_path(@team, stat.player) %></td>
 				<td><%= stat.minutes %></td>
 				<td><%= stat.fg %></td>
 				<td><%= stat.fga %></td>

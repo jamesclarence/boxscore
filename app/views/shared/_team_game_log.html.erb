@@ -1,6 +1,7 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
+			<th></th>
 			<th>Date</th>
 			<th>Opponent</th>
 			<th>Score</th>
@@ -8,10 +9,11 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @team.games.each do |game| %>
+		<% @team.games.each_with_index do |game, i| %>
 			<tr>
+				<td><%= i + 1 %></td>
 				<td><%= game.date.to_date %></td>
-				<td><%= game.opponent.school %> <%= game.opponent.nickname %></td>
+				<td><%= link_to "#{game.opponent.school} #{game.opponent.nickname}", game.opponent %></td>
 				<td><%= link_to "#{game.team_score}-#{game.opponent_score}", team_game_path(@team, game) %></td>
 				<td><%= game.result %></td>
 			</tr>

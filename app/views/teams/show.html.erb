@@ -1,7 +1,11 @@
-<h1><%= @team.school %> <%= @team.nickname %> (<%= @team.league %>)</h1>
-<p><%= @team.city %>, <%= @team.state %> <%= @team.zip %></p>
-<%= link_to "See #{@team.nickname}'s Roster", team_players_path(@team) %> |
-<%= link_to 'Back To Teams', teams_path %> |
-<%= link_to "Create A New Game To Add Your Box Score!", new_team_game_path(@team) %>
+<h1 align="center"><%= @team.school %> <%= @team.nickname %></h1>
 
-<%= render partial: "shared/team_game_log" %>
+<div align="center">
+	<%= link_to "See #{@team.nickname}'s Roster", team_players_path(@team) %> |
+	<%= link_to 'Back To Teams', teams_path %> |
+	<%= link_to "Create A New Game To Add Your Box Score!", new_team_game_path(@team) %>
+</div>
+
+<div>
+	<%= render partial: "shared/team_game_log" %>
+</div>
