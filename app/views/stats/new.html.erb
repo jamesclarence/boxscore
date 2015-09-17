@@ -7,6 +7,21 @@
 		<tr>
 			<th>Player</th>
 			<th>Minutes</th>
+			<th>FG</th>
+			<th>FGA</th>
+			<th>3P</th>
+			<th>3PA</th>
+			<th>FT</th>
+			<th>FTA</th>
+			<th>ORB</th>
+			<th>DRB</th>
+			<th>TRB</th>
+			<th>AST</th>
+			<th>STL</th>
+			<th>BLK</th>
+			<th>TOV</th>
+			<th>PF</th>
+			<th>PTS</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -18,6 +33,66 @@
 			<%= f.fields_for :stats, @game.stats.find_or_initialize_by(player: player) do |s| %>	
 			<td class="field">
 				<%= s.text_field :minutes %>
+			</td>
+
+			<td class="field">	
+				<%= s.text_field :fg %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :fga %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :three_p %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :three_p_a %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :ft %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :fta %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :orb %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :drb %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :trb %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :assists %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :steals %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :blocks %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :turnovers %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :fouls %>
+			</td>
+
+			<td class="field">
+				<%= s.text_field :points %>
 			</td>
 
 			<%= s.hidden_field :player_id, value: player.id %>

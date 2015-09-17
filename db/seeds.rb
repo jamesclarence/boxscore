@@ -2,7 +2,7 @@ require 'faker'
 I18n.reload!
 
 # Create Users
-5.times do
+2.times do
   user = User.new(
     firstname: Faker::Name.first_name,
     lastname: Faker::Name.last_name,
@@ -15,8 +15,8 @@ I18n.reload!
 end
 
 # Create Teams
-10.times do
-  team = Team.create(
+5.times do
+  Team.create!(
     school: Faker::Address.state,
     nickname: Faker::Team.creature.capitalize,
     city: Faker::Address.city,
@@ -26,60 +26,92 @@ end
     user: User.all.sample
     )
 end
+teams = Team.all
 
-# Positions
-position = ["Point Guard", "Shooting Guard", "Small Forward", "Power Forward", "Center"]
+# Player Positions
+position = ["PG", "SG", "SF", "PF", "C"]
 
-# Create Players
-150.times do
-  player = Player.create(
-    firstname: Faker::Name.first_name,
-    lastname: Faker::Name.last_name,
-    number: Faker::Number.number(2),
-    position: position.sample,
-    height: Faker::Number.between(71, 86),
-    weight: Faker::Number.between(180,300),
-    team: Team.all.sample
-    )
+# Create Players For Each Team
+teams.each do |t|
+  t.players = []
+  15.times do
+    t.players << Player.create!(
+      firstname: Faker::Name.first_name,
+      lastname: Faker::Name.last_name,
+      number: Faker::Number.number(2),
+      position: position.sample,
+      height: Faker::Number.between(71, 86),
+      weight: Faker::Number.between(180,300),
+      team: t
+      )
+  end
 end
 
-# Create Games
-250.times do
-  game = Game.create(
-    date: Faker::Date.between(300.days.ago, Date.today),
-    location: Faker::Address.city,
-    team_score: Faker::Number.between(85, 120),
-    opponent_score: Faker::Number.between(85, 120),
-    team: Team.all.sample,
-    opponent: Team.all.sample
-    )
+
+# Create Games (New try)
+teams.each do |t|
+  t.games = []
+  10.times do
+    t.games << Game.create(
+      date: Faker::Date.between(300.days.ago, Date.today),
+      location: Faker::Address.city,
+      team_score: Faker::Number.between(85, 120),
+      opponent_score: Faker::Number.between(85, 120),
+      team: Team.all.sample,
+      opponent: Team.all.sample
+      )
+  end
 end
+
 
 # Create Statistics For Players
-players = Player.all
 games = Game.all
 
-until Stat.count == 750 do
-  stat = Stat.create(
-    fg: Faker::Number.between(0, 10),
-    fga: Faker::Number.between(11, 25),
-    three_p: Faker::Number.between(0, 10),
-    three_p_a: Faker::Number.between(0, 10),
-    ft: Faker::Number.between(0, 10),
-    fta: Faker::Number.between(0, 10),
-    orb: Faker::Number.between(0, 5),
-    drb: Faker::Number.between(0, 15),
-    assists: Faker::Number.between(0, 12),
-    steals: Faker::Number.between(0, 5),
-    blocks: Faker::Number.between(0, 5),
-    turnovers: Faker::Number.between(0, 8),
-    fouls: Faker::Number.between(0, 6),
-    points: Faker::Number.between(0, 30),
-    minutes: Faker::Number.between(0, 48),
-    player: players.sample,
-    game: games.sample
-  )
-end
+# games.each do |g|
+#   until g.stats.count == 15 do
+#     g.stats = []
+#     g.stats << Stat.create(
+#       fg: Faker::Number.between(0, 10),
+#       fga: Faker::Number.between(11, 25),
+#       three_p: Faker::Number.between(0, 10),
+#       three_p_a: Faker::Number.between(0, 10),
+#       ft: Faker::Number.between(0, 10),
+#       fta: Faker::Number.between(0, 10),
+#       orb: Faker::Number.between(0, 5),
+#       drb: Faker::Number.between(0, 15),
+#       assists: Faker::Number.between(0, 12),
+#       # steals: Faker::Number.between(0, 5),
+#       # blocks: Faker::Number.between(0, 5),
+#       # turnovers: Faker::Number.between(0, 8),
+#       # fouls: Faker::Number.between(0, 6),
+#       points: Faker::Number.between(0, 30),
+#       minutes: Faker::Number.between(0, 48),
+#       player: players.sample      
+#       )
+#   end
+# end
+
+# until Stat.count == 300  do
+#   stat = Stat.create(
+#     fg: Faker::Number.between(0, 10),
+#     fga: Faker::Number.between(11, 25),
+#     three_p: Faker::Number.between(0, 10),
+#     three_p_a: Faker::Number.between(0, 10),
+#     ft: Faker::Number.between(0, 10),
+#     fta: Faker::Number.between(0, 10),
+#     orb: Faker::Number.between(0, 5),
+#     drb: Faker::Number.between(0, 15),
+#     assists: Faker::Number.between(0, 12),
+#     steals: Faker::Number.between(0, 5),
+#     blocks: Faker::Number.between(0, 5),
+#     turnovers: Faker::Number.between(0, 8),
+#     fouls: Faker::Number.between(0, 6),
+#     points: Faker::Number.between(0, 30),
+#     minutes: Faker::Number.between(0, 48),
+#     player: players.sample,
+#     game: games.sample
+#   )
+# end
 
 # Create an admin
 admin = User.new(
@@ -91,13 +123,13 @@ admin.skip_confirmation!
 admin.save!
 
 # Create a member
-member = User.new(
-  email: 'member@example.com',
-  password: 'helloworld',
-  role: 'standard'
-  )
-member.skip_confirmation!
-member.save!
+# member = User.new(
+#   email: 'member@example.com',
+#   password: 'helloworld',
+#   role: 'standard'
+#   )
+# member.skip_confirmation!
+# member.save!
 
 puts "Seed finished"
 puts "#{User.count} users created"

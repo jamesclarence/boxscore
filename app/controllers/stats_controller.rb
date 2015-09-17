@@ -8,8 +8,9 @@ class StatsController < ApplicationController
   end
 
   def new
-    @team = Team.find(params[:team_id])
+    @stat = Stat.new
     @game = Game.find(params[:game_id])
+    @team = Team.find(params[:team_id])
   end
 
   def edit

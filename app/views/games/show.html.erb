@@ -5,6 +5,10 @@
 
 <%= render partial: "shared/show_game", locals: {game: @game, team: @game.team} %>
 
+<div>
+	<%= link_to "Enter Box Score", new_team_game_stat_path(@team, @game), class: 'btn btn-lg btn-success center-block' %>
+</div>
+
 <%= render "shared/stats", game: @game %>
 <%= render "shared/adv_stats", game: @game %>
 

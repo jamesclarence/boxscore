@@ -10,7 +10,6 @@ class GamesController < ApplicationController
   end
 
   def new
-    @team = Team.find(params[:team_id])
     @game = Game.new
   end
 
@@ -54,7 +53,7 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:date, :location, :opponent_id, :team_score, :opponent_score,
-      :stats_attributes => [:id, :player_id]
+      :stats_attributes => [:id, :player_id, :game_id, :fg, :fga, :three_p, :three_p_a, :orb, :drb, :assists, :steals, :blocks, :turnovers, :fouls, :minutes, :points, :ft, :fta]
       )
   end
 end
