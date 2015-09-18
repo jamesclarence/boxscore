@@ -47,8 +47,7 @@ teams.each do |t|
   end
 end
 
-
-# Create Games (New try)
+# Create Games
 teams.each do |t|
   t.games = []
   10.times do
@@ -63,55 +62,33 @@ teams.each do |t|
   end
 end
 
-
 # Create Statistics For Players
 games = Game.all
+players = Player.all
 
-# games.each do |g|
-#   until g.stats.count == 15 do
-#     g.stats = []
-#     g.stats << Stat.create(
-#       fg: Faker::Number.between(0, 10),
-#       fga: Faker::Number.between(11, 25),
-#       three_p: Faker::Number.between(0, 10),
-#       three_p_a: Faker::Number.between(0, 10),
-#       ft: Faker::Number.between(0, 10),
-#       fta: Faker::Number.between(0, 10),
-#       orb: Faker::Number.between(0, 5),
-#       drb: Faker::Number.between(0, 15),
-#       assists: Faker::Number.between(0, 12),
-#       # steals: Faker::Number.between(0, 5),
-#       # blocks: Faker::Number.between(0, 5),
-#       # turnovers: Faker::Number.between(0, 8),
-#       # fouls: Faker::Number.between(0, 6),
-#       points: Faker::Number.between(0, 30),
-#       minutes: Faker::Number.between(0, 48),
-#       player: players.sample      
-#       )
-#   end
-# end
-
-# until Stat.count == 300  do
-#   stat = Stat.create(
-#     fg: Faker::Number.between(0, 10),
-#     fga: Faker::Number.between(11, 25),
-#     three_p: Faker::Number.between(0, 10),
-#     three_p_a: Faker::Number.between(0, 10),
-#     ft: Faker::Number.between(0, 10),
-#     fta: Faker::Number.between(0, 10),
-#     orb: Faker::Number.between(0, 5),
-#     drb: Faker::Number.between(0, 15),
-#     assists: Faker::Number.between(0, 12),
-#     steals: Faker::Number.between(0, 5),
-#     blocks: Faker::Number.between(0, 5),
-#     turnovers: Faker::Number.between(0, 8),
-#     fouls: Faker::Number.between(0, 6),
-#     points: Faker::Number.between(0, 30),
-#     minutes: Faker::Number.between(0, 48),
-#     player: players.sample,
-#     game: games.sample
-#   )
-# end
+until Stat.count == 200  do
+  players.each do
+    Stat.create(
+      fg: Faker::Number.between(0, 10),
+      fga: Faker::Number.between(11, 25),
+      three_p: Faker::Number.between(0, 10),
+      three_p_a: Faker::Number.between(0, 10),
+      ft: Faker::Number.between(0, 10),
+      fta: Faker::Number.between(0, 10),
+      orb: Faker::Number.between(0, 5),
+      drb: Faker::Number.between(0, 15),
+      assists: Faker::Number.between(0, 12),
+      steals: Faker::Number.between(0, 5),
+      blocks: Faker::Number.between(0, 5),
+      turnovers: Faker::Number.between(0, 8),
+      fouls: Faker::Number.between(0, 6),
+      points: Faker::Number.between(0, 50),
+      minutes: Faker::Number.between(0, 48),
+      game: games.sample,
+      player: players.sample
+      )
+  end
+end
 
 # Create an admin
 admin = User.new(

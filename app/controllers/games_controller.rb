@@ -26,7 +26,7 @@ class GamesController < ApplicationController
 
     if @game.save
       flash[:success] = "Game saved to your team."
-      redirect_to team_game_path(@team)
+      redirect_to new_team_game_stat_path(@team, @game)
     else
       flash[:notice] = "Error saving the game. Please try again."
       render :new
