@@ -1,16 +1,18 @@
-<h1><%= @game.team.school %> <%= @game.team.nickname %> vs. <%= @game.opponent.school %> <%= @game.opponent.nickname %></h1>
-<h3>(<%= @game.date %> - <%= @game.location %>)</h3>
+<div align="center">
+	<h1><%= link_to "#{@team.school} #{@team.nickname}", team_path(@team) %> vs. <%= link_to "#{@game.opponent.school} #{@game.opponent.nickname}", team_path(@game.opponent) %></h1>
+	<h4>Game Location: <%= @game.location %></h4>
+</div>
 
-<table class="table table-striped">
-	<tr>
-		<th><%= link_to "#{@team.school} #{@team.nickname}", team_path(@team) %>:</th>
-		<td><%= @game.team_score %></td>
-	</tr>
-		<th><%= link_to "#{@game.opponent.school} #{@game.opponent.nickname}", team_path(@team) %>:</th>
-		<td><%= @game.opponent_score %></td>
-	<tr>
-		<th>Result:</th>
-		<td><%= @game.result %></td>
-	</tr>
-</table>
-<%= link_to "Back To The #{@team.nickname} Game Log", team_games_path(@team) %>
+<%= render partial: "shared/show_game", locals: {game: @game, team: @game.team} %>
+
+<div>
+	<%= link_to "Enter Box Score", new_team_game_stat_path(@team, @game), class: 'btn btn-lg btn-success center-block' %>
+</div>
+
+<%= render "shared/stats", game: @game %>
+<%= render "shared/adv_stats", game: @game %>
+
+<div align="center">
+	<%= link_to "Back To The #{@team.nickname} Game Log", team_path(@team) %> | 
+	<%= link_to "See The #{@team.nickname} Roster", team_players_path(@team) %>
+</div>

@@ -1,0 +1,24 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Date</th>
+			<th>Opponent</th>
+			<th>Score</th>
+			<th>Result</th>
+			<th>Edit Box Score</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @team.games.each_with_index do |game, i| %>
+			<tr>
+				<td><%= i + 1 %></td>
+				<td><%= game.date.to_date %></td>
+				<td><%= link_to "#{game.opponent.school} #{game.opponent.nickname}", game.opponent %></td>
+				<td><%= link_to "#{game.team_score}-#{game.opponent_score}", team_game_path(@team, game) %></td>
+				<td><%= game.result %></td>
+				<td><%= link_to "Edit/Enter Box Score", new_team_game_stat_path(team, game), class: 'btn btn-sm btn-success center-block' %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -1,0 +1,31 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th colspan="17">Other/Advanced Box Score Statistics</th>
+		</tr>
+		<tr>
+			<th>Player - Position</th>
+			<th>Minutes</th>
+			<th>FG%</th>
+			<th>TS%</th>
+			<th>eFG%</th>
+			<th>2P%</th>
+			<th>3P%</th>
+			<th>FT%</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% game.stats.each do |stat| %>
+			<tr>
+				<td><%= link_to "#{stat.player.firstname} #{stat.player.lastname}", team_player_path(@team, stat.player) %></td>
+				<td><%= stat.minutes %></td>
+				<td><%= stat.fg_pct %></td>
+				<td><%= stat.ts_pct %></td>
+				<td><%= stat.efg %></td>
+				<td><%= stat.two_pt_pct %></td>
+				<td><%= stat.three_pt_pct %></td>
+				<td><%= stat.ft_pct %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

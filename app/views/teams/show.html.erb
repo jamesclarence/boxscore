@@ -1,4 +1,32 @@
-<h1><%= @team.school %> <%= @team.nickname %> (<%= @team.league %>)</h1>
-<p><%= @team.city %>, <%= @team.state %> <%= @team.zip %></p>
-<%= link_to "See #{@team.nickname}'s Roster", team_players_path(@team) %> |
-<%= link_to 'Back To Teams', teams_path %>
+<h1 align="center"><%= @team.school %> <%= @team.nickname %></h1>
+
+<div align="center">
+	<%= link_to "See #{@team.nickname}'s Roster", team_players_path(@team) %> |
+	<%= link_to 'Back To Teams', teams_path %> |
+	<%= link_to "Create A New Game To Add Your Box Score!", new_team_game_path(@team) %>
+</div>
+
+<div align="center">
+	<table class="table-condensed">
+		<thead>
+			<th>W</th>
+			<th>L</th>
+			<th>Win%</th>
+			<th>Team PPG</th>
+			<th>Opp PPG</th>
+			<th>Difference</th>
+		</thead>
+		<tbody align="center">
+			<td><%= @game.win.count %></td>
+			<td><%= @game.loss.count %></td>
+			<td><%= (@game.win.count.to_f/@game.count).round(3) %></td>
+			<td><%= (@game.sum(:team_score).to_f/@game.count) %></td>
+			<td><%= (@game.sum(:opponent_score).to_f/@game.count) %> </td>
+			<td><%= ((@game.sum(:team_score).to_f/@game.count) - (@game.sum(:opponent_score).to_f/@game.count)).round(2) %></td>
+		</tbody>
+	</table>
+</div>
+
+<div>
+	<%= render partial: "shared/team_game_log", locals: { game: @game, team: @team } %>
+</div>

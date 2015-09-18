@@ -6,6 +6,7 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find(params[:id])
+    @stat = @player.stats
     @team = Team.find(params[:team_id])
   end
 

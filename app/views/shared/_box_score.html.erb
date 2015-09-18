@@ -1,0 +1,99 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Player - Position</th>
+			<th>Minutes</th>
+			<th>FG</th>
+			<th>FGA</th>
+			<th>3P</th>
+			<th>3PA</th>
+			<th>FT</th>
+			<th>FTA</th>
+			<th>ORB</th>
+			<th>DRB</th>
+			<th>TRB</th>
+			<th>AST</th>
+			<th>STL</th>
+			<th>BLK</th>
+			<th>TOV</th>
+			<th>PF</th>
+			<th>PTS</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= form_for stat, url: {action: "create"} do |f| %>
+		<tr>	
+			<td>#<%= player.number %> <%= player.firstname%> <%= player.lastname%></td>
+
+			<td class="field">
+				<%= f.text_field :minutes %>
+			</td>
+
+			<td class="field">	
+				<%= f.text_field :fg %>
+			</td>
+			
+			<td class="field">
+				<%= f.text_field :fga %>
+			</td>
+
+			<td class="field">
+				<%= f.text_field :three_p %>
+			</td>
+
+			<td class="field">
+				<%= f.text_field :three_p_a %>
+			</td>
+
+			<td class="field">
+				<%= f.text_field :ft %>
+			</td>
+
+			<td class="field">
+				<%= f.text_field :fta %>
+			</td>
+
+			<td class="field">
+				<%= f.text_field :orb %>
+			</td>
+
+			<td class="field">
+				<%= f.text_field :drb %>
+			</td>
+
+			<td class="field">
+				<%= f.text_field :trb %>
+			</td>
+
+			<td class="field">
+				<%= f.text_field :assists %>
+			</td>
+
+			<td class="field">
+				<%= f.text_field :steals %>
+			</td>
+
+			<td class="field">
+				<%= f.text_field :blocks %>
+			</td>
+
+			<td class="field">
+				<%= f.text_field :turnovers %>
+			</td>
+			
+			<td class="field">
+				<%= f.text_field :fouls %>
+			</td>
+
+			<td class="field">
+				<%= f.text_field :points %>
+			</td>
+
+			<td class="actions">
+				<%= f.submit %>
+			</td>				
+		</tr>
+		<% end %>
+		<% end %>
+	</tbody>
+</table>

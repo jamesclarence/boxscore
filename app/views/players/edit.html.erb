@@ -1,5 +1,6 @@
-<h1>Edit Your Player</h1>
- 
+<h1 align="center">Edit Your Player</h1>
+
+<div align="center"> 
 <%= form_for :player, url: team_player_path(@team, @player), method: :patch do |f| %>
  
   <% if @player.errors.any? %>
@@ -51,5 +52,8 @@
   	</div>
  
 <% end %>
- 
-<%= link_to 'Back To Teams', teams_path %>
+</div>
+
+<div align="center">
+<%= link_to 'Back To Team', team_path %> | <%= link_to "#{@team.nickname} Roster", team_players_path %> | <%= link_to 'Back To Player Page', team_player_path %>
+</div>

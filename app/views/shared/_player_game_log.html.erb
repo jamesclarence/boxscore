@@ -1,0 +1,53 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Opponent</th>
+			<th>Score</th>
+			<th>Result</th>
+			<th>Minutes</th>
+			<th>FG</th>
+			<th>FGA</th>
+			<th>3P</th>
+			<th>3PA</th>
+			<th>FT</th>
+			<th>FTA</th>
+			<th>ORB</th>
+			<th>DRB</th>
+			<th>TRB</th>
+			<th>AST</th>
+			<th>STL</th>
+			<th>BLK</th>
+			<th>TOV</th>
+			<th>PF</th>
+			<th>PTS</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% stat.each do |s| %>
+		<tr>
+			<td><%= s.player.firstname %></td>
+			<td><%= s.game.date %></td>
+			<td><%= s.game.opponent.school %> <%= s.game.opponent.nickname %></td>
+			<td><%= s.game.team_score %> - <%= s.game.opponent_score %></td>
+			<td><%= s.game.result %></td>
+			<td><%= s.minutes %></td>
+			<td><%= s.fg %></td>
+			<td><%= s.fga %></td>
+			<td><%= s.three_p %></td>
+			<td><%= s.three_p_a %></td>
+			<td><%= s.ft %></td>
+			<td><%= s.fta %></td>
+			<td><%= s.orb %></td>
+			<td><%= s.drb %></td>
+			<td><%= s.trb %></td>
+			<td><%= s.assists %></td>
+			<td><%= s.steals %></td>
+			<td><%= s.blocks %></td>
+			<td><%= s.turnovers %></td>
+			<td><%= s.fouls %></td>
+			<td><%= s.points %></td>
+		</tr>
+		<% end %>		
+	</tbody>
+</table>
