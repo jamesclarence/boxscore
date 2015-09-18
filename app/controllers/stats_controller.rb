@@ -14,7 +14,9 @@ class StatsController < ApplicationController
   end
 
   def edit
+    @stat = Stat.find(params[:id])
     @game = Game.find(params[:game_id])
+    @team = Team.find(params[:team_id])
   end
 
   def create
@@ -33,11 +35,7 @@ class StatsController < ApplicationController
 
   def update
     @game = Game.find(params[:game_id])
-    @stat = Stat.new
-    @stat.game = @game
-    @team = Team.find(params[:team_id])
-    # @player = Player.find(params[:player_id])
-    @team.players = @player
+    @stat = Stat.find(params[:id])
 
     if @stat.save
       flash[:success] = "Stats saved for this game."

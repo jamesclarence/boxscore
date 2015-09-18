@@ -28,7 +28,7 @@
 		<%= form_for @game, url: team_game_path(@team, @game) do |f| %>
 		<% @game.players.each do |player| %>
 		<tr>	
-			<td><%= player.firstname %> <%= player.lastname %></td>
+			<td><%= link_to "#{player.firstname} #{player.lastname}", team_player_path(@team, player) %></td>
 
 			<%= f.fields_for :stats, @game.stats.find_or_initialize_by(player: player) do |s| %>	
 			<td class="field">

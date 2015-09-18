@@ -14,16 +14,11 @@ class Game < ActiveRecord::Base
     self[:date].to_date
   end
 
-  def win?
-    team_score > opponent_score
-  end
-  
-  def loss?
-    !win?
-  end
+  scope :win, -> { where("team_score > opponent_score") }
+  scope :loss, -> { where("opponent_score > team_score") }  
 
   def result
-    if win?
+    if team_score > opponent_score
       "Win"
     else
       "Loss"

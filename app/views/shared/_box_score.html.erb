@@ -22,78 +22,78 @@
 	</thead>
 	<tbody>
 		<%= form_for stat, url: {action: "create"} do |f| %>
-			<tr>	
-				<td><%= player.firstname%></td>
+		<tr>	
+			<td>#<%= player.number %> <%= player.firstname%> <%= player.lastname%></td>
 
-				<td class="field">
-					<%= f.text_field :minutes %>
-				</td>
+			<td class="field">
+				<%= f.text_field :minutes %>
+			</td>
 
-				<td class="field">	
-					<%= f.text_field :fg %>
-				</td>
-					
-				<td class="field">
-					<%= f.text_field :fga %>
-				</td>
+			<td class="field">	
+				<%= f.text_field :fg %>
+			</td>
+			
+			<td class="field">
+				<%= f.text_field :fga %>
+			</td>
 
-				<td class="field">
-					<%= f.text_field :three_p %>
-				</td>
+			<td class="field">
+				<%= f.text_field :three_p %>
+			</td>
 
-				<td class="field">
-					<%= f.text_field :three_p_a %>
-				</td>
+			<td class="field">
+				<%= f.text_field :three_p_a %>
+			</td>
 
-				<td class="field">
-					<%= f.text_field :ft %>
-				</td>
+			<td class="field">
+				<%= f.text_field :ft %>
+			</td>
 
-				<td class="field">
-					<%= f.text_field :fta %>
-				</td>
+			<td class="field">
+				<%= f.text_field :fta %>
+			</td>
 
-				<td class="field">
-					<%= f.text_field :orb %>
-				</td>
+			<td class="field">
+				<%= f.text_field :orb %>
+			</td>
 
-				<td class="field">
-					<%= f.text_field :drb %>
-				</td>
+			<td class="field">
+				<%= f.text_field :drb %>
+			</td>
 
-				<td class="field">
-					<%= f.text_field :trb %>
-				</td>
+			<td class="field">
+				<%= f.text_field :trb %>
+			</td>
 
-				<td class="field">
-					<%= f.text_field :assists %>
-				</td>
+			<td class="field">
+				<%= f.text_field :assists %>
+			</td>
 
-				<td class="field">
-					<%= f.text_field :steals %>
-				</td>
+			<td class="field">
+				<%= f.text_field :steals %>
+			</td>
 
-				<td class="field">
-					<%= f.text_field :blocks %>
-				</td>
+			<td class="field">
+				<%= f.text_field :blocks %>
+			</td>
 
-				<td class="field">
-					<%= f.text_field :turnovers %>
-				</td>
-					
-				<td class="field">
-					<%= f.text_field :fouls %>
-				</td>
+			<td class="field">
+				<%= f.text_field :turnovers %>
+			</td>
+			
+			<td class="field">
+				<%= f.text_field :fouls %>
+			</td>
 
-				<td class="field">
-					<%= f.text_field :points %>
-				</td>
+			<td class="field">
+				<%= f.text_field :points %>
+			</td>
 
-				<td class="actions">
-			    	<%= f.submit %>
-			  	</td>				
-			</tr>
+			<td class="actions">
+				<%= f.submit %>
+			</td>				
+		</tr>
 		<% end %>
-			<% end %>
+		<% end %>
 	</tbody>
 </table>

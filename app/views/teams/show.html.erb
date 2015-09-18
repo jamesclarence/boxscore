@@ -6,6 +6,27 @@
 	<%= link_to "Create A New Game To Add Your Box Score!", new_team_game_path(@team) %>
 </div>
 
+<div align="center">
+	<table class="table-condensed">
+		<thead>
+			<th>W</th>
+			<th>L</th>
+			<th>Win%</th>
+			<th>Team PPG</th>
+			<th>Opp PPG</th>
+			<th>Difference</th>
+		</thead>
+		<tbody align="center">
+			<td><%= @game.win.count %></td>
+			<td><%= @game.loss.count %></td>
+			<td><%= (@game.win.count.to_f/@game.count).round(3) %></td>
+			<td><%= (@game.sum(:team_score).to_f/@game.count) %></td>
+			<td><%= (@game.sum(:opponent_score).to_f/@game.count) %> </td>
+			<td><%= ((@game.sum(:team_score).to_f/@game.count) - (@game.sum(:opponent_score).to_f/@game.count)).round(2) %></td>
+		</tbody>
+	</table>
+</div>
+
 <div>
-	<%= render partial: "shared/team_game_log" %>
+	<%= render partial: "shared/team_game_log", locals: { game: @game, team: @team } %>
 </div>

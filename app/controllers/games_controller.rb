@@ -10,6 +10,7 @@ class GamesController < ApplicationController
   end
 
   def new
+    @team = Team.find(params[:team_id])
     @game = Game.new
   end
 

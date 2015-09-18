@@ -6,6 +6,7 @@
 			<th>Opponent</th>
 			<th>Score</th>
 			<th>Result</th>
+			<th>Edit Box Score</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -16,6 +17,7 @@
 				<td><%= link_to "#{game.opponent.school} #{game.opponent.nickname}", game.opponent %></td>
 				<td><%= link_to "#{game.team_score}-#{game.opponent_score}", team_game_path(@team, game) %></td>
 				<td><%= game.result %></td>
+				<td><%= link_to "Edit/Enter Box Score", new_team_game_stat_path(team, game), class: 'btn btn-sm btn-success center-block' %></td>
 			</tr>
 		<% end %>
 	</tbody>
