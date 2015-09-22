@@ -3,7 +3,14 @@ class Stat < ActiveRecord::Base
   belongs_to :game
   has_many :teams, through: :game
 
+  # validate :points_validation
+  validates_presence_of :game_id, :player_id
   validates_with StatsValidator
+
+
+  # def points
+  #   (two_pt * 2) + (three_p * 3) + ft   
+  # end
 
   # Played In Game?
   def game_played?
@@ -70,6 +77,13 @@ class Stat < ActiveRecord::Base
   # Total Rebounds
   def trb
     orb + drb
+  end
+
+    # Points
+  def points_validation
+    if points != ((two_pt * 2) + (three_p * 3) + ft)
+      errors.add(:stat, "Points must equal 2P, 3P, and FT made")
+    end
   end
 
   # Some statistic formulas from the following sources:

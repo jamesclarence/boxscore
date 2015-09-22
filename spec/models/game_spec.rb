@@ -4,7 +4,6 @@ RSpec.describe Game, type: :model do
   before do
     @game = create(:game)
     @team = create(:team)
-    @stat = create(:stat)
   end
 
   it "has a team id" do
@@ -16,21 +15,21 @@ RSpec.describe Game, type: :model do
   end
 
   it "has statistics" do
-    expect(@stat.game_id).to eq(1)
+    expect(@game.stats).to be_present
   end
 
-  it "makes win? true when team score is greater than opponent score" do
-    expect(@game.win?).to eq(true)
-  end
+  describe "Game scopes" do
+    it "team wins when team score is greater than opponent score" do
+      expect(@game.result).to eq("Win")
+    end
 
-  it "makes loss? true when team score is less than opponent score" do
-    expect(@game.loss?).to eq(false)
+    it "expects result to equal 'Loss'" do
+      @game.team_score = 80
+      @game.opponent_score = 95
+      expect(@game.result).to eq("Loss")
+    end
   end
-
-  it "expects result to equal 'Win'" do
-    expect(@game.result).to eq("Win")
-  end
-
+  
   it "validates presence of team id" do
     expect(@game.team_id).to eq(1)
   end 
