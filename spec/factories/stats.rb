@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :stat do
     player
+    game
 
     points 31
     fg 10

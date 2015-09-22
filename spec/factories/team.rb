@@ -10,6 +10,16 @@ FactoryGirl.define do
     league "NBA"
   end
 
+  factory :team_with_players do
+    transient do
+      players_count 2
+    end
+
+    after(:create) do |team, evaluator|
+      create_list(:player, evaluator.players_count, team: team)
+    end
+  end
+
   factory :opponent_team, class: Team do
     user
 

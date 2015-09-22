@@ -5,6 +5,11 @@ RSpec.describe Stat, type: :model do
     @stat = create(:stat)
   end
 
+  it "gives error message if points are invalid" do
+    @stat.points = 32
+    expect(@stat.errors.full_messages).to eq("Points must equal 2P, 3P, and FT made")
+  end
+
   describe "#game_played?" do
     it "validates presence of a player" do
       expect(@stat.player_id).to eq(1)
