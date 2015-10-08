@@ -1,16 +1,16 @@
 class Stat < ActiveRecord::Base
   belongs_to :player
   belongs_to :game
-  has_many :teams, through: :game
+  belongs_to :team #, through: :game
 
   # validate :points_validation
   validates_presence_of :game_id, :player_id
   validates_with StatsValidator
 
 
-  # def points
-  #   (two_pt * 2) + (three_p * 3) + ft   
-  # end
+  def points
+    (two_pt * 2) + (three_p * 3) + ft
+  end
 
   # Played In Game?
   def game_played?
@@ -20,8 +20,8 @@ class Stat < ActiveRecord::Base
   # Field Goal Percentage
   def fg_pct
     return 0.0 if fga.zero?
-    
-    (fg.to_f/fga).round(3)  
+
+    (fg.to_f/fga).round(3)
   end
 
   # Two Point Shots Made
@@ -43,7 +43,7 @@ class Stat < ActiveRecord::Base
 
   # Three Point Field Goal Percentage
   def three_pt_pct
-    return 0.0 if three_p.zero? || three_p_a.zero? 
+    return 0.0 if three_p.zero? || three_p_a.zero?
 
     (three_p.to_f/three_p_a).round(3)
   end
@@ -79,7 +79,7 @@ class Stat < ActiveRecord::Base
     orb + drb
   end
 
-    # Points
+  # Points
   def points_validation
     if points != ((two_pt * 2) + (three_p * 3) + ft)
       errors.add(:stat, "Points must equal 2P, 3P, and FT made")

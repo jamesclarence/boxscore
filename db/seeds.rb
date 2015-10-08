@@ -2,20 +2,20 @@ require 'faker'
 I18n.reload!
 
 # Create Users
-2.times do
+1.times do
   user = User.new(
     firstname: Faker::Name.first_name,
     lastname: Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(8),
-    role: 'standard' 
+    role: 'standard'
     )
     user.skip_confirmation!
     user.save!
 end
 
 # Create Teams
-5.times do
+2.times do
   Team.create!(
     school: Faker::Address.state,
     nickname: Faker::Team.creature.capitalize,
@@ -34,7 +34,7 @@ position = ["PG", "SG", "SF", "PF", "C"]
 # Create Players For Each Team
 teams.each do |t|
   t.players = []
-  15.times do
+  5.times do
     t.players << Player.create!(
       firstname: Faker::Name.first_name,
       lastname: Faker::Name.last_name,
@@ -47,17 +47,19 @@ teams.each do |t|
   end
 end
 
-# Create Games
+teams = Team.all
+
+# Create Games For Teams
 teams.each do |t|
   t.games = []
-  10.times do
+  5.times do
     t.games << Game.create(
       date: Faker::Date.between(300.days.ago, Date.today),
       location: Faker::Address.city,
       team_score: Faker::Number.between(85, 120),
       opponent_score: Faker::Number.between(85, 120),
-      team: Team.all.sample,
-      opponent: Team.all.sample
+      team: Team.find(1),
+      opponent: Team.find(2)
       )
   end
 end
@@ -66,26 +68,27 @@ end
 games = Game.all
 players = Player.all
 
-until Stat.count == 200  do
-  players.each do
-    Stat.create(
-      fg: Faker::Number.between(0, 10),
-      fga: Faker::Number.between(11, 25),
-      three_p: Faker::Number.between(0, 10),
-      three_p_a: Faker::Number.between(0, 10),
-      ft: Faker::Number.between(0, 10),
-      fta: Faker::Number.between(0, 10),
-      orb: Faker::Number.between(0, 5),
-      drb: Faker::Number.between(0, 15),
-      assists: Faker::Number.between(0, 12),
-      steals: Faker::Number.between(0, 5),
-      blocks: Faker::Number.between(0, 5),
-      turnovers: Faker::Number.between(0, 8),
-      fouls: Faker::Number.between(0, 6),
+# until Stat.count == 25  do
+  games.each do |s|
+    s.stats = []
+    5.times do
+      s.stats << Stat.create(
+      fg: Faker::Number.between(1, 10),
+      fga: Faker::Number.between(5, 25),
+      # three_p: Faker::Number.between(0, 10),
+      # three_p_a: Faker::Number.between(0, 10),
+      # ft: Faker::Number.between(0, 10),
+      # fta: Faker::Number.between(0, 10),
+      # orb: Faker::Number.between(0, 5),
+      # drb: Faker::Number.between(0, 15),
+      # assists: Faker::Number.between(0, 12),
+      # steals: Faker::Number.between(0, 5),
+      # blocks: Faker::Number.between(0, 5),
+      # turnovers: Faker::Number.between(0, 8),
+      # fouls: Faker::Number.between(0, 6),
       points: Faker::Number.between(0, 50),
-      minutes: Faker::Number.between(0, 48),
-      game: games.sample,
-      player: players.sample
+      # minutes: Faker::Number.between(0, 48),
+      player: s.players.sample
       )
   end
 end

@@ -5,9 +5,9 @@ class Game < ActiveRecord::Base
   has_many :players, through: :team
 
   accepts_nested_attributes_for :stats
-  
+
   validates_presence_of :team_id, :opponent_id, :team_score, :opponent_score
-  
+
   default_scope { order(date: :desc) }
 
   def date
@@ -15,7 +15,7 @@ class Game < ActiveRecord::Base
   end
 
   scope :win, -> { where("team_score > opponent_score") }
-  scope :loss, -> { where("opponent_score > team_score") }  
+  scope :loss, -> { where("opponent_score > team_score") }
 
   def result
     if team_score > opponent_score

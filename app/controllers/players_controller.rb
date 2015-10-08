@@ -38,7 +38,7 @@ class PlayersController < ApplicationController
     if @player.update(player_params)
       redirect_to team_player_path
     else
-      render 'edit' 
+      render 'edit'
     end
   end
 

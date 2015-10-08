@@ -1,5 +1,3 @@
-<%= render partial: "shared/player_game_log", locals: {player: @player} %>
-
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -26,7 +24,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @player.each do |s| %>
+		<% @player.stats.each do |s| %>
 		<tr>
 			<td><%= s.firstname %></td>
 			<td><%= s.game.date %></td>
@@ -50,24 +48,6 @@
 			<td><%= s.fouls %></td>
 			<td><%= s.points %></td>
 		</tr>
-		<% end %>		
+		<% end %>
 	</tbody>
 </table>
-
-			<td><%= p.minutes %></td>
-			<td><%= p.fg %></td>
-			<td><%= p.fga %></td>
-			<td><%= p.three_p %></td>
-			<td><%= p.three_p_a %></td>
-			<td><%= p.ft %></td>
-			<td><%= p.fta %></td>
-			<td><%= p.orb %></td>
-			<td><%= p.drb %></td>
-			<td><%= p.trb %></td>
-			<td><%= p.assists %></td>
-			<td><%= p.steals %></td>
-			<td><%= p.blocks %></td>
-			<td><%= p.turnovers %></td>
-			<td><%= p.fouls %></td>
-			<td><%= p.points %></td>
-

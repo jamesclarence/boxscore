@@ -45,10 +45,33 @@
 	<tbody>
 		<tr>
 			<% @player.games.each do |p| %>
+			<td><%= p.id %></td>
 			<td><%= p.date %></td>
 			<td><%= p.opponent.school %> <%= p.opponent.nickname %></td>
 			<td><%= p.team_score %> - <%= p.opponent_score %></td>
-			<td><%= p.result %></td>	
+			<td><%= p.result %></td>
+		</tr>
+		<% end %>
+		<tr>
+		<% @player.stats.each do |s| %>
+			<td><%= s.game_id %></td>
+			<td><%= s.player_id %></td>
+			<td><%= s.minutes %></td>
+			<td><%= s.fg %></td>
+			<td><%= s.fga %></td>
+			<td><%= s.three_p %></td>
+			<td><%= s.three_p_a %></td>
+			<td><%= s.ft %></td>
+			<td><%= s.fta %></td>
+			<td><%= s.orb %></td>
+			<td><%= s.drb %></td>
+			<td><%= s.trb %></td>
+			<td><%= s.assists %></td>
+			<td><%= s.steals %></td>
+			<td><%= s.blocks %></td>
+			<td><%= s.turnovers %></td>
+			<td><%= s.fouls %></td>
+			<td><%= s.points %></td>
 		</tr>
 		<% end %>
 	</tbody>
