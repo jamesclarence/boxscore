@@ -53,8 +53,9 @@
 		</tr>
 		<% end %>
 		<tr>
-		<% @player.stats.each do |s| %>
+			<% @player.stats.each do |s| %>
 			<td><%= s.game_id %></td>
+			<td><%= s.team_id %></td>
 			<td><%= s.player_id %></td>
 			<td><%= s.minutes %></td>
 			<td><%= s.fg %></td>
