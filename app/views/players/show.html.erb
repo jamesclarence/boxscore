@@ -17,6 +17,7 @@
 	</tr>
 </table>
 
+<div class="col-xs-6">
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -24,6 +25,25 @@
 			<th>Opponent</th>
 			<th>Score</th>
 			<th>Result</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<% @player.games.each do |p| %>
+			<td><%= p.id %></td>
+			<td><%= p.date %></td>
+			<td><%= p.opponent.school %> <%= p.opponent.nickname %></td>
+			<td><%= p.team_score %> - <%= p.opponent_score %></td>
+			<td><%= p.result %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>
+<div class="col-xs-6">
+<table>
+	<thead>
+		<tr>	
 			<th>Minutes</th>
 			<th>FG</th>
 			<th>FGA</th>
@@ -43,15 +63,6 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<% @player.games.each do |p| %>
-			<td><%= p.id %></td>
-			<td><%= p.date %></td>
-			<td><%= p.opponent.school %> <%= p.opponent.nickname %></td>
-			<td><%= p.team_score %> - <%= p.opponent_score %></td>
-			<td><%= p.result %></td>
-		</tr>
-		<% end %>
 		<tr>
 			<% @player.stats.each do |s| %>
 			<td><%= s.game_id %></td>
@@ -77,5 +88,6 @@
 		<% end %>
 	</tbody>
 </table>
+</div>
 
 <%= link_to "Back To The #{@team.nickname} Roster", team_players_path(@team) %>

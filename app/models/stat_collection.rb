@@ -6,11 +6,11 @@ class StatCollection < Stat
   end
 
 	# Stats - Aggregate
-	def fg
+	def fg_sum
 		stats.sum(:fg)
 	end
 
-	def fga
+	def fga_sum
     stats.sum(:fga)
   end
 
