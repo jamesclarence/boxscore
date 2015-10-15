@@ -19,6 +19,7 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
+    authorize @team
     @team.user = current_user
 
     if @team.save
